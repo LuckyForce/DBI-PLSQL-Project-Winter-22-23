@@ -1,0 +1,76 @@
+START TRANSACTION;
+CREATE DATABASE IF NOT EXISTS TennisBooking;
+USE TennisBooking;
+
+CREATE TABLE IF NOT EXISTS `SocialHubs` (
+	`Id` INTEGER NOT NULL AUTO_INCREMENT,
+	`Facebook` TEXT NOT NULL,
+	`Instagram` TEXT NOT NULL,
+	`Twitter` TEXT NOT NULL,
+	`Youtube` TEXT NOT NULL,
+	`LinkedIn` TEXT NOT NULL,
+	`Telephone` TEXT NOT NULL,
+	`Email` TEXT NOT NULL,
+	`Website` TEXT NOT NULL,
+	PRIMARY KEY (`Id`)
+);
+CREATE TABLE IF NOT EXISTS `Users` (
+	`Id` INTEGER NOT NULL AUTO_INCREMENT,
+	`UUID` TEXT NOT NULL,
+	`Email` TEXT NOT NULL,
+	`Password` TEXT NOT NULL,
+	`VerificationCode` TEXT NOT NULL,
+	`Verified` INTEGER NOT NULL,
+	`ResetCode` TEXT NOT NULL,
+	`ResetCodeExpires` TEXT,
+	`FirstName` TEXT NOT NULL,
+	`LastName` TEXT NOT NULL,
+	`Gender` INTEGER NOT NULL,
+	`BirthDate` TEXT,
+	`RegistrationDate` TEXT NOT NULL,
+	`Welcomed` INTEGER NOT NULL,
+	PRIMARY KEY (`Id`)
+);
+CREATE TABLE IF NOT EXISTS `Clubs` (
+	`Id` INTEGER NOT NULL AUTO_INCREMENT,
+	`Link` TEXT NOT NULL,
+	`AdminId` INTEGER,
+	`IBAN` TEXT NOT NULL,
+	`PaidTill` TEXT,
+	`FreeTrialTill` TEXT NOT NULL,
+	`Name` TEXT NOT NULL,
+	`Info` TEXT NOT NULL,
+	`Address` TEXT NOT NULL,
+	`ZipCode` TEXT NOT NULL,
+	`ImagePath` TEXT NOT NULL,
+	`SocialHubId` INTEGER NOT NULL,
+	FOREIGN KEY (`AdminId`) REFERENCES `Users` (`Id`),
+	FOREIGN KEY (`SocialHubId`) REFERENCES `SocialHubs` (`Id`) ON DELETE CASCADE,
+	PRIMARY KEY (`Id`)
+);
+CREATE TABLE IF NOT EXISTS `PhoneNumbers` (
+	`UserId` INTEGER NOT NULL,
+	`Prefix` TEXT NOT NULL,
+	`Number` TEXT NOT NULL,
+	FOREIGN KEY (`UserId`) REFERENCES `Users` (`Id`) ON DELETE CASCADE,
+	PRIMARY KEY (`UserId`)
+);
+CREATE TABLE IF NOT EXISTS `ClubEvents` (
+	`Id` INTEGER NOT NULL AUTO_INCREMENT,
+	`Name` TEXT NOT NULL,
+	`Time` TEXT NOT NULL,
+	`Info` TEXT NOT NULL,
+	`ClubNavigationId` INTEGER NOT NULL,
+	FOREIGN KEY (`ClubNavigationId`) REFERENCES `Clubs` (`Id`) ON DELETE CASCADE,
+	PRIMARY KEY (`Id`)
+);
+CREATE TABLE IF NOT EXISTS `ClubNews` (
+	`Id` INTEGER NOT NULL AUTO_INCREMENT,
+	`Title` TEXT NOT NULL,
+	`Info` TEXT NOT NULL,
+	`Written` TEXT NOT NULL,
+	`ClubNavigationId` INTEGER NOT NULL,
+	FOREIGN KEY (`ClubNavigationId`) REFERENCES `Clubs` (`Id`) ON DELETE CASCADE,
+	PRIMARY KEY (`Id`)
+);
+COMMIT;
