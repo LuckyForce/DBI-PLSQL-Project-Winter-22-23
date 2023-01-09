@@ -6,23 +6,24 @@ USE TennisBooking;
 CREATE TABLE IF NOT EXISTS `User` (
 	`Id` INTEGER NOT NULL AUTO_INCREMENT,
 	`UUID` TEXT NOT NULL,
-	`Email` TEXT NOT NULL,
+	`Email` VARCHAR(255) NOT NULL,
 	`Password` TEXT NOT NULL,
 	`VerificationCode` TEXT NOT NULL,
-	`Verified` INTEGER NOT NULL,
+	`Verified` TINYINT NOT NULL,
 	`ResetCode` TEXT NOT NULL,
-	`ResetCodeExpires` TEXT,
+	`ResetCodeExpires` DATETIME,
 	`FirstName` TEXT NOT NULL,
 	`LastName` TEXT NOT NULL,
 	`Gender` INTEGER NOT NULL,
-	`BirthDate` TEXT,
-	`RegistrationDate` TEXT NOT NULL,
+	`BirthDate` DATE,
+	`RegistrationDate` DATETIME NOT NULL,
 	`Welcomed` INTEGER NOT NULL,
-	PRIMARY KEY (`Id`)
+	PRIMARY KEY (`Id`),
+	UNIQUE (`Email`)
 );
 CREATE TABLE IF NOT EXISTS `Club` (
 	`Id` INTEGER NOT NULL AUTO_INCREMENT,
-	`Link` TEXT NOT NULL,
+	`Link` VARCHAR(255) NOT NULL,
 	`AdminId` INTEGER,
 	`IBAN` TEXT NOT NULL,
 	`PaidTill` TEXT,
@@ -38,8 +39,8 @@ CREATE TABLE IF NOT EXISTS `Club` (
 );
 CREATE TABLE IF NOT EXISTS `ClubEvent` (
 	`Id` INTEGER NOT NULL AUTO_INCREMENT,
-	`Name` TEXT NOT NULL,
-	`Time` TEXT NOT NULL,
+	`Title` TEXT NOT NULL,
+	`Time` DATETIME NOT NULL,
 	`Info` TEXT NOT NULL,
 	`ClubNavigationId` INTEGER NOT NULL,
 	FOREIGN KEY (`ClubNavigationId`) REFERENCES `Club` (`Id`) ON DELETE CASCADE,
@@ -49,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `ClubNews` (
 	`Id` INTEGER NOT NULL AUTO_INCREMENT,
 	`Title` TEXT NOT NULL,
 	`Info` TEXT NOT NULL,
-	`Written` TEXT NOT NULL,
+	`Written` DATETIME NOT NULL,
 	`ClubNavigationId` INTEGER NOT NULL,
 	FOREIGN KEY (`ClubNavigationId`) REFERENCES `Club` (`Id`) ON DELETE CASCADE,
 	PRIMARY KEY (`Id`)
@@ -61,10 +62,10 @@ CREATE TABLE `CourtType` (
 CREATE TABLE `Court` (
    `Id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
    `Name` TEXT NOT NULL,
-   `Bookable` INTEGER NOT NULL,
+   `Bookable` TINYINT NOT NULL,
    `Type` INTEGER NOT NULL,
-   `APrice` REAL NOT NULL,
-   `BPrice` REAL NULL,
+   `APrice` DOUBLE NOT NULL,
+   `BPrice` DOUBLE NULL,
    `ATimeFrom` INTEGER NOT NULL,
    `ATimeTill` INTEGER NOT NULL,
    `AWeekendTimeTill` INTEGER NOT NULL,
@@ -75,8 +76,8 @@ CREATE TABLE `Court` (
 CREATE TABLE `Reservation` (
    `Id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
    `UUID` TEXT NOT NULL,
-   `StartTime` TEXT NOT NULL,
-   `EndTime` TEXT NOT NULL,
+   `StartTime` DATETIME NOT NULL,
+   `EndTime` DATETIME NOT NULL,
    `CourtNavigationId` INTEGER NULL,
    `UserNavigationId` INTEGER NULL,
    `Comment` TEXT NULL,
