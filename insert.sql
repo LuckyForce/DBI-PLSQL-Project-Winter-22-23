@@ -3,6 +3,7 @@
 ------------------------------------------------------------
 
 -- User
+-- 10 Users
 -- CREATE TABLE IF NOT EXISTS `User` (
 -- 	`Id` INTEGER NOT NULL AUTO_INCREMENT,
 -- 	`UUID` TEXT NOT NULL,
@@ -33,6 +34,7 @@ INSERT INTO `User` (`UUID`, `Email`, `Password`, `VerificationCode`, `Verified`,
 ('0000-0000-0009', 'info9@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0);
 
 -- Club
+-- 3 Clubs
 -- CREATE TABLE IF NOT EXISTS `Club` (
 -- 	`Id` INTEGER NOT NULL AUTO_INCREMENT,
 -- 	`Link` TEXT NOT NULL,
@@ -46,10 +48,13 @@ INSERT INTO `User` (`UUID`, `Email`, `Password`, `VerificationCode`, `Verified`,
 -- 	`ZipCode` TEXT NOT NULL,
 -- 	`ImagePath` TEXT NOT NULL,
 -- 	FOREIGN KEY (`AdminId`) REFERENCES `User` (`Id`),
--- 	PRIMARY KEY (`Id`)
+-- 	PRIMARY KEY (`Id`),
+--  UNIQUE (`Link`)
 -- );
+INSERT INTO `Club` (`Link`, `AdminId`, `IBAN`, `PaidTill`, `FreeTrialTill`, `Name`, `Info`, `Address`, `ZipCode`, `ImagePath`) VALUES 
 
 -- ClubEvent
+-- 3 Events per Club
 -- CREATE TABLE IF NOT EXISTS `ClubEvent` (
 -- 	`Id` INTEGER NOT NULL AUTO_INCREMENT,
 -- 	`Name` TEXT NOT NULL,
@@ -61,6 +66,7 @@ INSERT INTO `User` (`UUID`, `Email`, `Password`, `VerificationCode`, `Verified`,
 -- );
 
 -- ClubNews
+-- 3 News per Club
 -- CREATE TABLE IF NOT EXISTS `ClubNews` (
 -- 	`Id` INTEGER NOT NULL AUTO_INCREMENT,
 -- 	`Title` TEXT NOT NULL,
@@ -84,6 +90,7 @@ INSERT INTO `CourtType` (`Name`) VALUES
 ('Hard');
 
 -- Court
+-- 2 Courts per Club
 -- CREATE TABLE `Court` (
 --    `Id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 --    `Name` TEXT NOT NULL,
@@ -100,6 +107,7 @@ INSERT INTO `CourtType` (`Name`) VALUES
 -- );
 
 -- Reservation
+-- 2 Reservations per Court
 -- CREATE TABLE `Reservation` (
 --    `Id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 --    `UUID` TEXT NOT NULL,
