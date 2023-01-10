@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `Club` (
 	`Link` VARCHAR(255) NOT NULL,
 	`AdminId` INTEGER,
 	`IBAN` TEXT NOT NULL,
-	`PaidTill` TEXT,
+	`PaidTill` DATE,
 	`FreeTrialTill` TEXT NOT NULL,
 	`Name` TEXT NOT NULL,
 	`Info` TEXT NOT NULL,
