@@ -31,6 +31,13 @@ END;
 -- create a new club
 BEGIN
     CREATE_CLUB(1, 'TestClub', 'TestClubDescription');
+    COMMIT;
+END;
+
+-- Pay for a club
+BEGIN
+    PAY_CLUB(1, 1);
+    COMMIT;
 END;
 
 -- create a new clubevent

@@ -70,11 +70,30 @@ BEGIN
     VALUES (p_link, p_user_id, 'NL00RABO0000000000', SYSDATE, SYSDATE + 30, p_name, '', '', '', '');
 END;
 
+-- Procedure pay_club(club_id, user_id)
+CREATE OR REPLACE PROCEDURE pay_club(p_club_id NUMBER, p_user_id NUMBER)
+IS
+    v_verified BOOLEAN := isverified(p_user_id);
+    v_is_admin BOOLEAN := ISUSERADMINOFCLUB(p_club_id, p_user_id);
+BEGIN
+    IF v_verified THEN
+        RAISE_APPLICATION_ERROR(-20003, 'Customer is not verified');
+    END IF;
+    IF NOT v_is_admin THEN
+        RAISE_APPLICATION_ERROR(-20004, 'User is not admin of club');
+    END IF;
+
+    UPDATE CLUB
+    SET PAIDTILL = SYSDATE + 30
+    WHERE ID = p_club_id;
+END;
+
 -- Procedure create_event(name, description, date, time, location, club_id, user_id)
 CREATE OR REPLACE PROCEDURE create_event(p_title IN VARCHAR2, p_info IN VARCHAR2, p_club_id NUMBER, p_user_id NUMBER)
 IS
     v_verified BOOLEAN := isverified(p_user_id);
     v_is_admin BOOLEAN := ISUSERADMINOFCLUB(p_user_id, p_club_id);
+    v_is_paid BOOLEAN := ISCLUBPAID(p_club_id);
 BEGIN
     IF v_verified THEN
         RAISE_APPLICATION_ERROR(-20003, 'Customer is not verified');
@@ -82,6 +101,10 @@ BEGIN
 
     IF NOT v_is_admin THEN
         RAISE_APPLICATION_ERROR(-20004, 'Customer is not admin of club');
+    END IF;
+
+    IF NOT v_is_paid THEN
+        RAISE_APPLICATION_ERROR(-20005, 'Club is not paid');
     END IF;
 
     INSERT INTO CLUBEVENT (TITLE, INFO, CLUBNAVIGATIONID)
@@ -93,6 +116,7 @@ CREATE OR REPLACE PROCEDURE create_news(p_title IN VARCHAR2, p_info IN VARCHAR2,
 IS
     v_verified BOOLEAN := isverified(p_user_id);
     v_is_admin BOOLEAN := ISUSERADMINOFCLUB(p_user_id, p_club_id);
+    v_is_paid BOOLEAN := ISCLUBPAID(p_club_id);
 BEGIN
     IF v_verified THEN
         RAISE_APPLICATION_ERROR(-20003, 'Customer is not verified');
@@ -100,6 +124,10 @@ BEGIN
 
     IF NOT v_is_admin THEN
         RAISE_APPLICATION_ERROR(-20004, 'Customer is not admin of club');
+    END IF;
+
+    IF NOT v_is_paid THEN
+        RAISE_APPLICATION_ERROR(-20005, 'Club is not paid');
     END IF;
 
     INSERT INTO CLUBNEWS (TITLE, INFO, CLUBNAVIGATIONID)
@@ -111,6 +139,7 @@ CREATE OR REPLACE PROCEDURE create_court(p_name IN VARCHAR2, p_club_id NUMBER, p
 IS
     v_verified BOOLEAN := isverified(p_user_id);
     v_is_admin BOOLEAN := ISUSERADMINOFCLUB(p_user_id, p_club_id);
+    v_is_paid BOOLEAN := ISCLUBPAID(p_club_id);
 BEGIN
     IF v_verified THEN
         RAISE_APPLICATION_ERROR(-20003, 'Customer is not verified');
@@ -118,6 +147,10 @@ BEGIN
 
     IF NOT v_is_admin THEN
         RAISE_APPLICATION_ERROR(-20004, 'Customer is not admin of club');
+    END IF;
+
+    IF NOT v_is_paid THEN
+        RAISE_APPLICATION_ERROR(-20005, 'Club is not paid');
     END IF;
 
     INSERT INTO COURT (NAME, BOOKABLE, TYPE, APRICE, BPRICE, ATIMEFROM, ATIMETILL, AWEEKENDTIMETILL, CLUBNAVIGATIONID)
@@ -129,6 +162,7 @@ CREATE OR REPLACE PROCEDURE edit_club_link(p_club_id NUMBER, p_link IN VARCHAR2,
 IS
     v_verified BOOLEAN := isverified(p_user_id);
     v_is_admin BOOLEAN := ISUSERADMINOFCLUB(p_user_id, p_club_id);
+    v_is_paid BOOLEAN := ISCLUBPAID(p_club_id);
 BEGIN
     IF v_verified THEN
         RAISE_APPLICATION_ERROR(-20003, 'Customer is not verified');
@@ -136,6 +170,10 @@ BEGIN
 
     IF NOT v_is_admin THEN
         RAISE_APPLICATION_ERROR(-20004, 'Customer is not admin of club');
+    END IF;
+
+    IF NOT v_is_paid THEN
+        RAISE_APPLICATION_ERROR(-20005, 'Club is not paid');
     END IF;
 
     UPDATE CLUB
@@ -148,6 +186,7 @@ CREATE OR REPLACE PROCEDURE edit_club_name(p_club_id NUMBER, p_name IN VARCHAR2,
 IS
     v_verified BOOLEAN := isverified(p_user_id);
     v_is_admin BOOLEAN := ISUSERADMINOFCLUB(p_user_id, p_club_id);
+    v_is_paid BOOLEAN := ISCLUBPAID(p_club_id);
 BEGIN
     IF v_verified THEN
         RAISE_APPLICATION_ERROR(-20003, 'Customer is not verified');
@@ -155,6 +194,10 @@ BEGIN
 
     IF NOT v_is_admin THEN
         RAISE_APPLICATION_ERROR(-20004, 'Customer is not admin of club');
+    END IF;
+
+    IF NOT v_is_paid THEN
+        RAISE_APPLICATION_ERROR(-20005, 'Club is not paid');
     END IF;
 
     UPDATE CLUB

@@ -22,7 +22,7 @@ BEGIN
 END;
 
 -- ClubPaid
-CREATE OR REPLACE FUNCTION clubPaid(p_club_id INTEGER)
+CREATE OR REPLACE FUNCTION isClubPaid(p_club_id INTEGER)
 RETURN BOOLEAN
 AS
     v_is_paid BOOLEAN;
