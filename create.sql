@@ -1,9 +1,10 @@
-START TRANSACTION;
 DROP DATABASE TennisBooking;
 CREATE DATABASE IF NOT EXISTS TennisBooking;
 USE TennisBooking;
 
-CREATE TABLE IF NOT EXISTS `User` (
+START TRANSACTION;
+
+CREATE TABLE IF NOT EXISTS `Customer` (
 	`Id` INTEGER NOT NULL AUTO_INCREMENT,
 	`UUID` TEXT NOT NULL,
 	`Email` VARCHAR(255) NOT NULL,
@@ -27,13 +28,13 @@ CREATE TABLE IF NOT EXISTS `Club` (
 	`AdminId` INTEGER,
 	`IBAN` TEXT NOT NULL,
 	`PaidTill` DATE,
-	`FreeTrialTill` TEXT NOT NULL,
+	`FreeTrialTill` DATE NOT NULL,
 	`Name` TEXT NOT NULL,
-	`Info` TEXT NOT NULL,
-	`Address` TEXT NOT NULL,
-	`ZipCode` TEXT NOT NULL,
+	`Info` TEXT NULL,
+	`Address` TEXT NULL,
+	`ZipCode` INT NULL,
 	`ImagePath` TEXT NOT NULL,
-	FOREIGN KEY (`AdminId`) REFERENCES `User` (`Id`),
+	FOREIGN KEY (`AdminId`) REFERENCES `Customer` (`Id`),
 	PRIMARY KEY (`Id`),
 	UNIQUE (`Link`)
 );
@@ -55,11 +56,11 @@ CREATE TABLE IF NOT EXISTS `ClubNews` (
 	FOREIGN KEY (`ClubNavigationId`) REFERENCES `Club` (`Id`) ON DELETE CASCADE,
 	PRIMARY KEY (`Id`)
 );
-CREATE TABLE `CourtType` (
+CREATE TABLE IF NOT EXISTS `CourtType` (
 	`Id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `Name` TEXT NOT NULL
 );
-CREATE TABLE `Court` (
+CREATE TABLE IF NOT EXISTS `Court` (
    `Id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
    `Name` TEXT NOT NULL,
    `Bookable` TINYINT NOT NULL,
@@ -73,15 +74,15 @@ CREATE TABLE `Court` (
    FOREIGN KEY (`Type`) REFERENCES `CourtType` (`Id`) ON DELETE CASCADE,
    FOREIGN KEY (`ClubNavigationId`) REFERENCES `Club` (`Id`) ON DELETE CASCADE
 );
-CREATE TABLE `Reservation` (
+CREATE TABLE IF NOT EXISTS `Booking` (
    `Id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
    `UUID` TEXT NOT NULL,
    `StartTime` DATETIME NOT NULL,
    `EndTime` DATETIME NOT NULL,
    `CourtNavigationId` INTEGER NULL,
-   `UserNavigationId` INTEGER NULL,
+   `CustomerNavigationId` INTEGER NULL,
    `Comment` TEXT NULL,
    FOREIGN KEY (`CourtNavigationId`) REFERENCES `Court` (`Id`),
-   FOREIGN KEY (`UserNavigationId`) REFERENCES `User` (`Id`)
+   FOREIGN KEY (`CustomerNavigationId`) REFERENCES `Customer` (`Id`)
 );
 COMMIT;

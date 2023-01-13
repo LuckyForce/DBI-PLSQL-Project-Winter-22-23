@@ -22,17 +22,16 @@
 -- 	PRIMARY KEY (`Id`),
 -- 	UNIQUE (`Email`)
 -- );
-INSERT INTO `User` (`UUID`, `Email`, `Password`, `VerificationCode`, `Verified`, `ResetCode`, `ResetCodeExpires`, `FirstName`, `LastName`, `Gender`, `BirthDate`, `RegistrationDate`, `Welcomed`) VALUES
-('0000-0000-0000', 'info0@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0),
-('0000-0000-0001', 'info1@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0),
-('0000-0000-0002', 'info2@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0),
-('0000-0000-0003', 'info3@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0),
-('0000-0000-0004', 'info4@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0),
-('0000-0000-0005', 'info5@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0),
-('0000-0000-0006', 'info6@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0),
-('0000-0000-0007', 'info7@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0),
-('0000-0000-0008', 'info8@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0),
-('0000-0000-0009', 'info9@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0);
+INSERT INTO `Customer` (`UUID`, `Email`, `Password`, `VerificationCode`, `Verified`, `ResetCode`, `ResetCodeExpires`, `FirstName`, `LastName`, `Gender`, `BirthDate`, `RegistrationDate`, `Welcomed`) VALUES ('UUID0', 'info0@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0);
+INSERT INTO `Customer` (`UUID`, `Email`, `Password`, `VerificationCode`, `Verified`, `ResetCode`, `ResetCodeExpires`, `FirstName`, `LastName`, `Gender`, `BirthDate`, `RegistrationDate`, `Welcomed`) VALUES ('UUID1', 'info1@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0);
+INSERT INTO `Customer` (`UUID`, `Email`, `Password`, `VerificationCode`, `Verified`, `ResetCode`, `ResetCodeExpires`, `FirstName`, `LastName`, `Gender`, `BirthDate`, `RegistrationDate`, `Welcomed`) VALUES ('UUID2', 'info2@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0);
+INSERT INTO `Customer` (`UUID`, `Email`, `Password`, `VerificationCode`, `Verified`, `ResetCode`, `ResetCodeExpires`, `FirstName`, `LastName`, `Gender`, `BirthDate`, `RegistrationDate`, `Welcomed`) VALUES ('UUID3', 'info3@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0);
+INSERT INTO `Customer` (`UUID`, `Email`, `Password`, `VerificationCode`, `Verified`, `ResetCode`, `ResetCodeExpires`, `FirstName`, `LastName`, `Gender`, `BirthDate`, `RegistrationDate`, `Welcomed`) VALUES ('UUID4', 'info4@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0);
+INSERT INTO `Customer` (`UUID`, `Email`, `Password`, `VerificationCode`, `Verified`, `ResetCode`, `ResetCodeExpires`, `FirstName`, `LastName`, `Gender`, `BirthDate`, `RegistrationDate`, `Welcomed`) VALUES ('UUID5', 'info5@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0);
+INSERT INTO `Customer` (`UUID`, `Email`, `Password`, `VerificationCode`, `Verified`, `ResetCode`, `ResetCodeExpires`, `FirstName`, `LastName`, `Gender`, `BirthDate`, `RegistrationDate`, `Welcomed`) VALUES ('UUID6', 'info6@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0);
+INSERT INTO `Customer` (`UUID`, `Email`, `Password`, `VerificationCode`, `Verified`, `ResetCode`, `ResetCodeExpires`, `FirstName`, `LastName`, `Gender`, `BirthDate`, `RegistrationDate`, `Welcomed`) VALUES ('UUID7', 'info7@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0);
+INSERT INTO `Customer` (`UUID`, `Email`, `Password`, `VerificationCode`, `Verified`, `ResetCode`, `ResetCodeExpires`, `FirstName`, `LastName`, `Gender`, `BirthDate`, `RegistrationDate`, `Welcomed`) VALUES ('UUID8', 'info8@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0);
+INSERT INTO `Customer` (`UUID`, `Email`, `Password`, `VerificationCode`, `Verified`, `ResetCode`, `ResetCodeExpires`, `FirstName`, `LastName`, `Gender`, `BirthDate`, `RegistrationDate`, `Welcomed`) VALUES ('UUID9', 'info9@adrian-schauer.at', '123456', '000000', 0, '000000', '2017-01-01 00:00:00', 'Adrian', 'Schauer', 0, '1995-01-01', '2017-01-01 00:00:00', 0);
 
 -- Club
 -- 3 Clubs
@@ -52,10 +51,9 @@ INSERT INTO `User` (`UUID`, `Email`, `Password`, `VerificationCode`, `Verified`,
 -- 	PRIMARY KEY (`Id`),
 -- 	UNIQUE (`Link`)
 -- );
-INSERT INTO `Club` (`Link`, `AdminId`, `IBAN`, `PaidTill`, `FreeTrialTill`, `Name`, `Info`, `Address`, `ZipCode`, `ImagePath`) VALUES 
-('club1', 1, 'AT12345678901234', '2023-05-01 00:00:00', '2023-05-01 00:00:00', 'TC Eichgraben1', 'Super CLub Info', 'Einestraße 5', '3032', '/tceichgraben1'),
-('club2', 2, 'AT12345678901234', '2023-05-01 00:00:00', '2023-05-01 00:00:00', 'TC Eichgraben2', 'Super CLub Info', 'Einestraße 5', '3032', '/tceichgraben2'),
-('club3', 3, 'AT12345678901234', '2023-05-01 00:00:00', '2023-05-01 00:00:00', 'TC Eichgraben3', 'Super CLub Info', 'Einestraße 5', '3032', '/tceichgraben3');
+INSERT INTO `Club` (`Link`, `AdminId`, `IBAN`, `PaidTill`, `FreeTrialTill`, `Name`, `Info`, `Address`, `ZipCode`, `ImagePath`) VALUES ('club1', 1, 'AT12345678901234', '2023-05-01 00:00:00', '2023-05-01 00:00:00', 'TC Eichgraben1', 'Super CLub Info', 'Einestraße 5', '3032', '/tceichgraben1');
+INSERT INTO `Club` (`Link`, `AdminId`, `IBAN`, `PaidTill`, `FreeTrialTill`, `Name`, `Info`, `Address`, `ZipCode`, `ImagePath`) VALUES ('club2', 2, 'AT12345678901234', '2023-05-01 00:00:00', '2023-05-01 00:00:00', 'TC Eichgraben2', 'Super CLub Info', 'Einestraße 5', '3032', '/tceichgraben2');
+INSERT INTO `Club` (`Link`, `AdminId`, `IBAN`, `PaidTill`, `FreeTrialTill`, `Name`, `Info`, `Address`, `ZipCode`, `ImagePath`) VALUES ('club3', 3, 'AT12345678901234', '2023-05-01 00:00:00', '2023-05-01 00:00:00', 'TC Eichgraben3', 'Super CLub Info', 'Einestraße 5', '3032', '/tceichgraben3');
 
 -- ClubEvent
 -- 3 Events per Club
@@ -68,16 +66,15 @@ INSERT INTO `Club` (`Link`, `AdminId`, `IBAN`, `PaidTill`, `FreeTrialTill`, `Nam
 -- 	FOREIGN KEY (`ClubNavigationId`) REFERENCES `Club` (`Id`) ON DELETE CASCADE,
 -- 	PRIMARY KEY (`Id`)
 -- );
-INSERT INTO `ClubEvent` (`Title`, `Time`, `Info`, `ClubNavigationId`) VALUES 
-('Event1', '2017-01-01 00:00:00', 'Event Info', 1),
-('Event2', '2017-01-01 00:00:00', 'Event Info', 1),
-('Event3', '2017-01-01 00:00:00', 'Event Info', 1),
-('Event1', '2017-01-01 00:00:00', 'Event Info', 2),
-('Event2', '2017-01-01 00:00:00', 'Event Info', 2),
-('Event3', '2017-01-01 00:00:00', 'Event Info', 2),
-('Event1', '2017-01-01 00:00:00', 'Event Info', 3),
-('Event2', '2017-01-01 00:00:00', 'Event Info', 3),
-('Event3', '2017-01-01 00:00:00', 'Event Info', 3);
+INSERT INTO `ClubEvent` (`Title`, `Time`, `Info`, `ClubNavigationId`) VALUES ('Event1', '2017-01-01 00:00:00', 'Event Info', 1);
+INSERT INTO `ClubEvent` (`Title`, `Time`, `Info`, `ClubNavigationId`) VALUES ('Event2', '2017-01-01 00:00:00', 'Event Info', 1);
+INSERT INTO `ClubEvent` (`Title`, `Time`, `Info`, `ClubNavigationId`) VALUES ('Event3', '2017-01-01 00:00:00', 'Event Info', 1);
+INSERT INTO `ClubEvent` (`Title`, `Time`, `Info`, `ClubNavigationId`) VALUES ('Event1', '2017-01-01 00:00:00', 'Event Info', 2);
+INSERT INTO `ClubEvent` (`Title`, `Time`, `Info`, `ClubNavigationId`) VALUES ('Event2', '2017-01-01 00:00:00', 'Event Info', 2);
+INSERT INTO `ClubEvent` (`Title`, `Time`, `Info`, `ClubNavigationId`) VALUES ('Event3', '2017-01-01 00:00:00', 'Event Info', 2);
+INSERT INTO `ClubEvent` (`Title`, `Time`, `Info`, `ClubNavigationId`) VALUES ('Event1', '2017-01-01 00:00:00', 'Event Info', 3);
+INSERT INTO `ClubEvent` (`Title`, `Time`, `Info`, `ClubNavigationId`) VALUES ('Event2', '2017-01-01 00:00:00', 'Event Info', 3);
+INSERT INTO `ClubEvent` (`Title`, `Time`, `Info`, `ClubNavigationId`) VALUES ('Event3', '2017-01-01 00:00:00', 'Event Info', 3);
 
 -- ClubNews
 -- 3 News per Club
@@ -90,16 +87,15 @@ INSERT INTO `ClubEvent` (`Title`, `Time`, `Info`, `ClubNavigationId`) VALUES
 -- 	FOREIGN KEY (`ClubNavigationId`) REFERENCES `Club` (`Id`) ON DELETE CASCADE,
 -- 	PRIMARY KEY (`Id`)
 -- );
-INSERT INTO `ClubNews` (`Title`, `Info`, `Written`, `ClubNavigationId`) VALUES 
-('News1', 'News Info', '2017-01-01 00:00:00', 1),
-('News2', 'News Info', '2017-01-01 00:00:00', 1),
-('News3', 'News Info', '2017-01-01 00:00:00', 1),
-('News1', 'News Info', '2017-01-01 00:00:00', 2),
-('News2', 'News Info', '2017-01-01 00:00:00', 2),
-('News3', 'News Info', '2017-01-01 00:00:00', 2),
-('News1', 'News Info', '2017-01-01 00:00:00', 3),
-('News2', 'News Info', '2017-01-01 00:00:00', 3),
-('News3', 'News Info', '2017-01-01 00:00:00', 3);
+INSERT INTO `ClubNews` (`Title`, `Info`, `Written`, `ClubNavigationId`) VALUES ('News1', 'News Info', '2017-01-01 00:00:00', 1);
+INSERT INTO `ClubNews` (`Title`, `Info`, `Written`, `ClubNavigationId`) VALUES ('News2', 'News Info', '2017-01-01 00:00:00', 1);
+INSERT INTO `ClubNews` (`Title`, `Info`, `Written`, `ClubNavigationId`) VALUES ('News3', 'News Info', '2017-01-01 00:00:00', 1);
+INSERT INTO `ClubNews` (`Title`, `Info`, `Written`, `ClubNavigationId`) VALUES ('News1', 'News Info', '2017-01-01 00:00:00', 2);
+INSERT INTO `ClubNews` (`Title`, `Info`, `Written`, `ClubNavigationId`) VALUES ('News2', 'News Info', '2017-01-01 00:00:00', 2);
+INSERT INTO `ClubNews` (`Title`, `Info`, `Written`, `ClubNavigationId`) VALUES ('News3', 'News Info', '2017-01-01 00:00:00', 2);
+INSERT INTO `ClubNews` (`Title`, `Info`, `Written`, `ClubNavigationId`) VALUES ('News1', 'News Info', '2017-01-01 00:00:00', 3);
+INSERT INTO `ClubNews` (`Title`, `Info`, `Written`, `ClubNavigationId`) VALUES ('News2', 'News Info', '2017-01-01 00:00:00', 3);
+INSERT INTO `ClubNews` (`Title`, `Info`, `Written`, `ClubNavigationId`) VALUES ('News3', 'News Info', '2017-01-01 00:00:00', 3);
 
 -- CourtType
 -- { Sand = 0, Carpet = 1, Grass = 2, Hard = 3 }
@@ -107,11 +103,10 @@ INSERT INTO `ClubNews` (`Title`, `Info`, `Written`, `ClubNavigationId`) VALUES
 -- 	`Id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 --     `Name` TEXT NOT NULL
 -- );
-INSERT INTO `CourtType` (`Name`) VALUES
-('Sand'),
-('Carpet'),
-('Grass'),
-('Hard');
+INSERT INTO `CourtType` (`Name`) VALUES ('Sand');
+INSERT INTO `CourtType` (`Name`) VALUES ('Carpet');
+INSERT INTO `CourtType` (`Name`) VALUES ('Grass');
+INSERT INTO `CourtType` (`Name`) VALUES ('Hard');
 
 -- Court
 -- 2 Courts per Club
@@ -129,16 +124,15 @@ INSERT INTO `CourtType` (`Name`) VALUES
 --    FOREIGN KEY (`Type`) REFERENCES `CourtType` (`Id`) ON DELETE CASCADE,
 --    FOREIGN KEY (`ClubNavigationId`) REFERENCES `Club` (`Id`) ON DELETE CASCADE
 -- );
-INSERT INTO `Court` (`Name`, `Bookable`, `Type`, `APrice`, `BPrice`, `ATimeFrom`, `ATimeTill`, `AWeekendTimeTill`, `ClubNavigationId`) VALUES
-('Court1', 1, 1, 10.0, 5.0, 8, 22, 20, 1),
-('Court2', 1, 2, 10.0, 5.0, 8, 22, 20, 1),
-('Court3', 1, 3, 10.0, 5.0, 8, 22, 20, 1),
-('Court1', 1, 1, 10.0, 5.0, 8, 22, 20, 2),
-('Court2', 1, 2, 10.0, 5.0, 8, 22, 20, 2),
-('Court3', 1, 3, 10.0, 5.0, 8, 22, 20, 2),
-('Court1', 1, 1, 10.0, 5.0, 8, 22, 20, 3),
-('Court2', 1, 2, 10.0, 5.0, 8, 22, 20, 3),
-('Court3', 1, 3, 10.0, 5.0, 8, 22, 20, 3);
+INSERT INTO `Court` (`Name`, `Bookable`, `Type`, `APrice`, `BPrice`, `ATimeFrom`, `ATimeTill`, `AWeekendTimeTill`, `ClubNavigationId`) VALUES ('Court1', 1, 1, 10.0, 5.0, 8, 22, 20, 1);
+INSERT INTO `Court` (`Name`, `Bookable`, `Type`, `APrice`, `BPrice`, `ATimeFrom`, `ATimeTill`, `AWeekendTimeTill`, `ClubNavigationId`) VALUES ('Court2', 1, 2, 10.0, 5.0, 8, 22, 20, 1);
+INSERT INTO `Court` (`Name`, `Bookable`, `Type`, `APrice`, `BPrice`, `ATimeFrom`, `ATimeTill`, `AWeekendTimeTill`, `ClubNavigationId`) VALUES ('Court3', 1, 3, 10.0, 5.0, 8, 22, 20, 1);
+INSERT INTO `Court` (`Name`, `Bookable`, `Type`, `APrice`, `BPrice`, `ATimeFrom`, `ATimeTill`, `AWeekendTimeTill`, `ClubNavigationId`) VALUES ('Court1', 1, 1, 10.0, 5.0, 8, 22, 20, 2);
+INSERT INTO `Court` (`Name`, `Bookable`, `Type`, `APrice`, `BPrice`, `ATimeFrom`, `ATimeTill`, `AWeekendTimeTill`, `ClubNavigationId`) VALUES ('Court2', 1, 2, 10.0, 5.0, 8, 22, 20, 2);
+INSERT INTO `Court` (`Name`, `Bookable`, `Type`, `APrice`, `BPrice`, `ATimeFrom`, `ATimeTill`, `AWeekendTimeTill`, `ClubNavigationId`) VALUES ('Court3', 1, 3, 10.0, 5.0, 8, 22, 20, 2);
+INSERT INTO `Court` (`Name`, `Bookable`, `Type`, `APrice`, `BPrice`, `ATimeFrom`, `ATimeTill`, `AWeekendTimeTill`, `ClubNavigationId`) VALUES ('Court1', 1, 1, 10.0, 5.0, 8, 22, 20, 3);
+INSERT INTO `Court` (`Name`, `Bookable`, `Type`, `APrice`, `BPrice`, `ATimeFrom`, `ATimeTill`, `AWeekendTimeTill`, `ClubNavigationId`) VALUES ('Court2', 1, 2, 10.0, 5.0, 8, 22, 20, 3);
+INSERT INTO `Court` (`Name`, `Bookable`, `Type`, `APrice`, `BPrice`, `ATimeFrom`, `ATimeTill`, `AWeekendTimeTill`, `ClubNavigationId`) VALUES ('Court3', 1, 3, 10.0, 5.0, 8, 22, 20, 3);
 
 -- Reservation
 -- 2 Reservations per Court
@@ -153,4 +147,12 @@ INSERT INTO `Court` (`Name`, `Bookable`, `Type`, `APrice`, `BPrice`, `ATimeFrom`
 --    FOREIGN KEY (`CourtNavigationId`) REFERENCES `Court` (`Id`),
 --    FOREIGN KEY (`UserNavigationId`) REFERENCES `User` (`Id`)
 -- );
--- INSERT INTO `Reservation` (`UUID`, `StartTime`, `EndTime`, `CourtNavigationId`, `UserNavigationId`, `Comment`) VALUES
+INSERT INTO `Booking` (`UUID`, `StartTime`, `EndTime`, `CourtNavigationId`, `CustomerNavigationId`, `Comment`) VALUES ('UUID1', '2017-01-01 00:12:00', '2017-01-01 00:13:59', 1, 1, 'Comment');
+INSERT INTO `Booking` (`UUID`, `StartTime`, `EndTime`, `CourtNavigationId`, `CustomerNavigationId`, `Comment`) VALUES ('UUID2', '2017-01-01 00:12:00', '2017-01-01 00:13:59', 2, 1, 'Comment');
+INSERT INTO `Booking` (`UUID`, `StartTime`, `EndTime`, `CourtNavigationId`, `CustomerNavigationId`, `Comment`) VALUES ('UUID3', '2017-01-01 00:16:00', '2017-01-01 00:17:59', 2, 1, 'Comment');
+INSERT INTO `Booking` (`UUID`, `StartTime`, `EndTime`, `CourtNavigationId`, `CustomerNavigationId`, `Comment`) VALUES ('UUID4', '2017-01-01 00:12:00', '2017-01-01 00:13:59', 3, 1, 'Comment');
+INSERT INTO `Booking` (`UUID`, `StartTime`, `EndTime`, `CourtNavigationId`, `CustomerNavigationId`, `Comment`) VALUES ('UUID5', '2017-01-01 00:16:00', '2017-01-01 00:17:59', 3, 1, 'Comment');
+INSERT INTO `Booking` (`UUID`, `StartTime`, `EndTime`, `CourtNavigationId`, `CustomerNavigationId`, `Comment`) VALUES ('UUID6', '2017-01-01 00:12:00', '2017-01-01 00:13:59', 5, 1, 'Comment');
+INSERT INTO `Booking` (`UUID`, `StartTime`, `EndTime`, `CourtNavigationId`, `CustomerNavigationId`, `Comment`) VALUES ('UUID7', '2017-01-01 00:12:00', '2017-01-01 00:13:59', 8, 1, 'Comment');
+INSERT INTO `Booking` (`UUID`, `StartTime`, `EndTime`, `CourtNavigationId`, `CustomerNavigationId`, `Comment`) VALUES ('UUID8', '2017-01-01 00:16:00', '2017-01-01 00:17:59', 8, 1, 'Comment');
+INSERT INTO `Booking` (`UUID`, `StartTime`, `EndTime`, `CourtNavigationId`, `CustomerNavigationId`, `Comment`) VALUES ('UUID9', '2017-01-01 00:20:00', '2017-01-01 00:21:59', 8, 1, 'Comment');
