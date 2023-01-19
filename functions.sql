@@ -63,3 +63,22 @@ BEGIN
     RETURN v_is_verified;
 END;
 
+-- Court Type Valid
+CREATE OR REPLACE FUNCTION isCourtTypeValid(p_court_type_id INTEGER)
+RETURN BOOLEAN
+AS
+    v_is_valid BOOLEAN;
+    v_court_type_id INTEGER;
+    CURSOR v_court_type IS SELECT ID FROM CourtType WHERE Id = p_court_type_id;
+BEGIN
+    OPEN v_court_type;
+    FETCH v_court_type INTO v_court_type_id;
+    IF v_court_type%NOTFOUND THEN
+        v_is_valid := FALSE;
+    ELSE
+        v_is_valid := TRUE;
+    END IF;
+    CLOSE v_court_type;
+    RETURN v_is_valid;
+END;
+

@@ -45,7 +45,7 @@ END;
 
 -- create a new club
 BEGIN
-    CREATE_CLUB(1, 'TestClub', 'TestClubDescription');
+    CREATE_CLUB('TestClub', 'tc-eichgraben', 1);
     COMMIT;
 END;
 
@@ -69,12 +69,39 @@ END;
 
 -- create court
 BEGIN
-    CREATE_COURT(1, 'TestCourt', 'TestCourtDescription');
+    CREATE_COURT('TestCourt', 1, 1, 1);
     COMMIT;
 END;
 
 -- edit_club_link
 BEGIN
-    EDIT_CLUB_LINK(1, 'TestClubLink', 'TestClubLinkDescription');
+    EDIT_CLUB_LINK(1, 'TestClubLink', 1);
     COMMIT;
 END;
+
+-- edit_club_name
+BEGIN
+    EDIT_CLUB_NAME(1, 'TestClubName', 1);
+    COMMIT;
+END;
+
+-- get_clubs
+BEGIN
+    GET_CLUBS('TestClub');
+END;
+
+-- get_club_events
+BEGIN
+    GET_EVENTS(1);
+END;
+
+-- get_club_news
+BEGIN
+    GET_NEWS(1);
+END;
+
+-- get_club_courts
+BEGIN
+    GET_COURTS(1);
+END;
+

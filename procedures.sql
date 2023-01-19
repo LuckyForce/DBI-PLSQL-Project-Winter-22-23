@@ -67,7 +67,7 @@ BEGIN
     END IF;
 
     INSERT INTO CLUB (LINK, ADMINID, IBAN, PAIDTILL, FREETRIALTILL, NAME, INFO, ADDRESS, ZIPCODE, IMAGEPATH)
-    VALUES (p_link, p_user_id, 'NL00RABO0000000000', SYSDATE, SYSDATE + 30, p_name, '', '', '', '');
+    VALUES (p_link, p_user_id, 'NL00RABO0000000000', SYSDATE, SYSDATE + 30, p_name, '', '', '', 'default.png');
 END;
 
 -- Procedure pay_club(club_id, user_id)
@@ -84,7 +84,7 @@ BEGIN
     END IF;
 
     UPDATE CLUB
-    SET PAIDTILL = SYSDATE + 30
+    SET PAIDTILL = PAIDTILL + 30
     WHERE ID = p_club_id;
 END;
 
@@ -135,11 +135,12 @@ BEGIN
 END;
 
 -- Procedure create_court(name, location, club_id)
-CREATE OR REPLACE PROCEDURE create_court(p_name IN VARCHAR2, p_club_id NUMBER, p_user_id NUMBER)
+CREATE OR REPLACE PROCEDURE create_court(p_name IN VARCHAR2, p_type NUMBER, p_club_id NUMBER, p_user_id NUMBER)
 IS
     v_verified BOOLEAN := isverified(p_user_id);
     v_is_admin BOOLEAN := ISUSERADMINOFCLUB(p_user_id, p_club_id);
     v_is_paid BOOLEAN := ISCLUBPAID(p_club_id);
+    v_is_court_type_valid BOOLEAN := ISCOURTTYPEVALID(p_type);
 BEGIN
     IF v_verified THEN
         RAISE_APPLICATION_ERROR(-20003, 'Customer is not verified');
@@ -151,6 +152,10 @@ BEGIN
 
     IF NOT v_is_paid THEN
         RAISE_APPLICATION_ERROR(-20005, 'Club is not paid');
+    END IF;
+
+    IF NOT v_is_court_type_valid THEN
+        RAISE_APPLICATION_ERROR(-20006, 'Court type is not valid');
     END IF;
 
     INSERT INTO COURT (NAME, BOOKABLE, TYPE, APRICE, BPRICE, ATIMEFROM, ATIMETILL, AWEEKENDTIMETILL, CLUBNAVIGATIONID)
@@ -208,33 +213,69 @@ END;
 -- Get all clubs
 CREATE OR REPLACE PROCEDURE get_clubs(p_search IN VARCHAR2)
 IS
+    CURSOR c_clubs IS
+        SELECT ID, NAME, LINK
+        FROM CLUB
+        WHERE NAME LIKE '%' || p_search || '%';
+    v_clubs c_clubs%ROWTYPE;
 BEGIN
-    SELECT NAME, LINK FROM CLUB
-    WHERE NAME LIKE '%' || p_search || '%';
+    OPEN c_clubs;
+    LOOP
+        FETCH c_clubs INTO v_clubs;
+        EXIT WHEN c_clubs%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(v_clubs.ID || ' ' || v_clubs.NAME || ' ' || v_clubs.LINK);
+    END LOOP;
 END;
 
 -- Get all courts
 CREATE OR REPLACE PROCEDURE get_courts(p_club_id NUMBER)
 IS
+    CURSOR c_courts IS
+        SELECT *
+        FROM COURT
+        WHERE CLUBNAVIGATIONID = p_club_id;
+    v_courts c_courts%ROWTYPE;
 BEGIN
-    SELECT NAME FROM COURT
-    WHERE CLUBNAVIGATIONID = p_club_id;
+    OPEN c_courts;
+    LOOP
+        FETCH c_courts INTO v_courts;
+        EXIT WHEN c_courts%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(v_courts.ID || ' ' || v_courts.NAME || ' ' || v_courts.BOOKABLE || ' ' || v_courts.TYPE || ' ' || v_courts.APRICE || ' ' || v_courts.BPRICE || ' ' || v_courts.ATIMEFROM || ' ' || v_courts.ATIMETILL || ' ' || v_courts.AWEEKENDTIMETILL || ' ' || v_courts.CLUBNAVIGATIONID);
+    END LOOP;
 END;
 
 -- Get all events
 CREATE OR REPLACE PROCEDURE get_events(p_club_id NUMBER)
 IS
+    CURSOR c_events IS
+        SELECT *
+        FROM CLUBEVENT
+        WHERE CLUBNAVIGATIONID = p_club_id;
+    v_events c_events%ROWTYPE;
 BEGIN
-    SELECT TITLE, INFO FROM CLUBEVENT
-    WHERE CLUBNAVIGATIONID = p_club_id;
+    OPEN c_events;
+    LOOP
+        FETCH c_events INTO v_events;
+        EXIT WHEN c_events%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(v_events.ID || ' ' || v_events.TITLE || ' ' || v_events.INFO || ' ' || v_events.CLUBNAVIGATIONID);
+    END LOOP;
 END;
 
 -- Get all news
 CREATE OR REPLACE PROCEDURE get_news(p_club_id NUMBER)
 IS
+    CURSOR c_news IS
+        SELECT *
+        FROM CLUBNEWS
+        WHERE CLUBNAVIGATIONID = p_club_id;
+    v_news c_news%ROWTYPE;
 BEGIN
-    SELECT TITLE, INFO FROM CLUBNEWS
-    WHERE CLUBNAVIGATIONID = p_club_id;
+    OPEN c_news;
+    LOOP
+        FETCH c_news INTO v_news;
+        EXIT WHEN c_news%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(v_news.ID || ' ' || v_news.TITLE || ' ' || v_news.INFO || ' ' || v_news.CLUBNAVIGATIONID);
+    END LOOP;
 END;
 
 
