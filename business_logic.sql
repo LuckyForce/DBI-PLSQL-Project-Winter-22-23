@@ -24,16 +24,23 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE(Sys.diutil.BOOL_TO_INT(ISVERIFIED(2)));
 END;
 
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(Sys.diutil.BOOL_TO_INT(ISCOURTTYPEVALID(1)));
+END;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(Sys.diutil.BOOL_TO_INT(ISCOURTTYPEVALID(10)));
+END;
+
 -- Procedures
 -- Register a new user
 BEGIN
- REGISTER('Test1', 'admin1234');
+ REGISTER('info@adrian-schauer.at', 'admin1234');
  COMMIT;
 END;
 
 -- Verify a user
 BEGIN
- VERIFY('Test1', '233213');
+ VERIFY('info@adrian-schauer.at', '233213');
  COMMIT;
 END;
 
@@ -87,7 +94,7 @@ END;
 
 -- get_clubs
 BEGIN
-    GET_CLUBS('TestClub');
+    GET_CLUBS('TC');
 END;
 
 -- get_club_events

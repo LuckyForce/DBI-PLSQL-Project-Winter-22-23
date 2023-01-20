@@ -50,16 +50,16 @@ RETURN BOOLEAN
 AS
     v_is_verified BOOLEAN;
     v_costumer_id INTEGER;
-    CURSOR v_user IS SELECT ID FROM Customer WHERE Id = p_customer_id AND Verified = 1;
+    CURSOR c_user IS SELECT ID FROM Customer WHERE Id = p_customer_id AND Verified = 1;
 BEGIN
-    OPEN v_user;
-    FETCH v_user INTO v_costumer_id;
-    IF v_user%NOTFOUND THEN
+    OPEN c_user;
+    FETCH c_user INTO v_costumer_id;
+    IF c_user%NOTFOUND THEN
         v_is_verified := FALSE;
     ELSE
         v_is_verified := TRUE;
     END IF;
-    CLOSE v_user;
+    CLOSE c_user;
     RETURN v_is_verified;
 END;
 

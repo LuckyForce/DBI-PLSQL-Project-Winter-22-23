@@ -219,10 +219,10 @@ IS
         WHERE NAME LIKE '%' || p_search || '%';
     v_clubs c_clubs%ROWTYPE;
 BEGIN
-    OPEN c_clubs;
-    LOOP
-        FETCH c_clubs INTO v_clubs;
-        EXIT WHEN c_clubs%NOTFOUND;
+    IF p_search IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'Search is null');
+    END IF;
+    FOR v_clubs IN c_clubs LOOP
         DBMS_OUTPUT.PUT_LINE(v_clubs.ID || ' ' || v_clubs.NAME || ' ' || v_clubs.LINK);
     END LOOP;
 END;
@@ -236,10 +236,7 @@ IS
         WHERE CLUBNAVIGATIONID = p_club_id;
     v_courts c_courts%ROWTYPE;
 BEGIN
-    OPEN c_courts;
-    LOOP
-        FETCH c_courts INTO v_courts;
-        EXIT WHEN c_courts%NOTFOUND;
+    FOR v_courts IN c_courts LOOP
         DBMS_OUTPUT.PUT_LINE(v_courts.ID || ' ' || v_courts.NAME || ' ' || v_courts.BOOKABLE || ' ' || v_courts.TYPE || ' ' || v_courts.APRICE || ' ' || v_courts.BPRICE || ' ' || v_courts.ATIMEFROM || ' ' || v_courts.ATIMETILL || ' ' || v_courts.AWEEKENDTIMETILL || ' ' || v_courts.CLUBNAVIGATIONID);
     END LOOP;
 END;
@@ -253,10 +250,7 @@ IS
         WHERE CLUBNAVIGATIONID = p_club_id;
     v_events c_events%ROWTYPE;
 BEGIN
-    OPEN c_events;
-    LOOP
-        FETCH c_events INTO v_events;
-        EXIT WHEN c_events%NOTFOUND;
+    FOR v_events IN c_events LOOP
         DBMS_OUTPUT.PUT_LINE(v_events.ID || ' ' || v_events.TITLE || ' ' || v_events.INFO || ' ' || v_events.CLUBNAVIGATIONID);
     END LOOP;
 END;
@@ -270,10 +264,8 @@ IS
         WHERE CLUBNAVIGATIONID = p_club_id;
     v_news c_news%ROWTYPE;
 BEGIN
-    OPEN c_news;
+    FOR v_news IN c_news
     LOOP
-        FETCH c_news INTO v_news;
-        EXIT WHEN c_news%NOTFOUND;
         DBMS_OUTPUT.PUT_LINE(v_news.ID || ' ' || v_news.TITLE || ' ' || v_news.INFO || ' ' || v_news.CLUBNAVIGATIONID);
     END LOOP;
 END;
