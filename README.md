@@ -6,9 +6,9 @@ DBI PLSQL Project for school
 
 - [x] create tables at least 4
 - [x] insert data
-- [ ] create procedures at least 2
-- [ ] create functions at least 2
-- [ ] test business logic
+- [x] create procedures at least 2
+- [x] create functions at least 2
+- [x] test business logic
 
 ## Install
 
